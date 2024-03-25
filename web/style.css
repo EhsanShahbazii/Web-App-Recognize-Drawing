@@ -1,6 +1,7 @@
 body {
   font-family: Arial;
   background-color: skyblue;
+  overscroll-behavior: none;
 }
 
 #content {
