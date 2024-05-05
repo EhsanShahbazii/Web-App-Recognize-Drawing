@@ -18,11 +18,15 @@ class SketchPad {
 
     this.ctx = this.canvas.getContext("2d");
 
+    this.reset();
+
+    this.#addEventListeners();
+  }
+
+  reset() {
     this.paths = [];
     this.isDrawing = false;
     this.#redraw();
-
-    this.#addEventListeners();
   }
 
   #addEventListeners() {
@@ -41,7 +45,7 @@ class SketchPad {
       }
     };
 
-    this.canvas.onmouseup = () => {
+    document.onmouseup = () => {
       this.isDrawing = false;
     };
 
@@ -55,8 +59,8 @@ class SketchPad {
       this.canvas.ontouchmove(loc);
     };
 
-    this.canvas.ontouchend = (evt) => {
-      this.canvas.onmouseup();
+    document.ontouchend = (evt) => {
+      document.onmouseup();
     };
 
     this.undoBtn.onclick = () => {
